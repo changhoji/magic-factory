@@ -1,20 +1,22 @@
 using Components;
+using Unity.Collections;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Authorings
 {
-    public class GridConfigAuthoring : MonoBehaviour
+    public class GridMapAuthoring : MonoBehaviour
     {
         public int Width;
         public int Height;
 
-        private class GridConfigBaker : Baker<GridConfigAuthoring>
+        private class GridConfigBaker : Baker<GridMapAuthoring>
         {
-            public override void Bake(GridConfigAuthoring authoring)
+            public override void Bake(GridMapAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.None);
-                AddComponent(entity, new GridConfig
+                AddComponent(entity, new GridMap
                 {
                     Width = authoring.Width,
                     Height = authoring.Height,

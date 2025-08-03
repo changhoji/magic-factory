@@ -24,6 +24,7 @@ namespace Authorings
                 ProducePosition = authoring.transform.position,
                 NextProductTime = 0.0f,
             });
+            Debug.Log($"in baker: position = {authoring.transform.position}");
         }
     }
 }

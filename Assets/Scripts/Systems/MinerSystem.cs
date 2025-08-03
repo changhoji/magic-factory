@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.Transforms;
 using Unity.Burst;
 using Aspects;
+// ReSharper disable All
 
 namespace Systems
 {

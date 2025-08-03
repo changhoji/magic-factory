@@ -165,6 +165,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1121932112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6461083317271572713, guid: fdd893bde028c4d47b7b7b6efc6a77e7, type: 3}
+  m_PrefabInstance: {fileID: 2254364262549319610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1192192725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1192192727}
+  - component: {fileID: 1192192726}
+  m_Layer: 0
+  m_Name: MinerPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1192192726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192192725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b934d034ec6a4dee974dbbd673b63d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 1121932112}
+--- !u!4 &1192192727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192192725}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2254364262549319610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,4 +285,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2254364262549319610}
+  - {fileID: 1192192727}
   - {fileID: 928062188}

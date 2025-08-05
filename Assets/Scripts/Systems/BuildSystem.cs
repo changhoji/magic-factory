@@ -1,3 +1,4 @@
+using Authorings.Utilities;
 using Components;
 using Unity.Burst;
 using Unity.Collections;
@@ -26,6 +27,7 @@ namespace Systems
             new BuildJob
             {
                 Ecb = ecb,
+                Elements = gridSystem.Elements.AsReadOnly(),
                 Buildings = gridSystem.Buildings.AsParallelWriter(),
             }.ScheduleParallel();
         }
@@ -48,12 +50,19 @@ namespace Systems
     public partial struct BuildJob : IJobEntity
     {
         public EntityCommandBuffer.ParallelWriter Ecb;
+        public NativeHashMap<int2, ElementType>.ReadOnly Elements;
         public NativeParallelHashMap<int2, Entity>.ParallelWriter Buildings;
 
         private void Execute(Entity entity, in BuildRequest buildRequest)
         {
-            int2 gridPosition = GetGridPosition(buildRequest.WorldPosition);
+            int2 gridPosition = GridMapUtility.WorldToGrid(buildRequest.WorldPosition);
             float3 position = new float3(gridPosition.x, gridPosition.y, 0);
+
+            if (!Elements.ContainsKey(gridPosition))
+            {
+                Ecb.DestroyEntity(0, entity);
+                return;
+            }
             
             Debug.Log($"mousePosition = {buildRequest.WorldPosition}, gridPosition = {gridPosition}");
 
@@ -73,11 +82,6 @@ namespace Systems
                 NextProductTime = 0f,
                 ProducePosition = position,
             });
-        }
-        
-        private int2 GetGridPosition(float3 worldPosition)
-        {
-            return new int2(Mathf.FloorToInt(worldPosition.x + .5f), Mathf.FloorToInt(worldPosition.y + .5f));
         }
     }
 }
